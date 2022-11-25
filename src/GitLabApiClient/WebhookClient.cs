@@ -12,10 +12,7 @@ namespace GitLabApiClient
     {
         private readonly GitLabHttpFacade _httpFacade;
 
-        internal WebhookClient(GitLabHttpFacade httpFacade)
-        {
-            _httpFacade = httpFacade;
-        }
+        internal WebhookClient(GitLabHttpFacade httpFacade) => _httpFacade = httpFacade;
 
         /// <summary>
         /// Retrieves a hook by its id

@@ -386,7 +386,7 @@ namespace GitLabApiClient.Test
 
             status.Status.Should().Be(ExportStatusEnum.Finished);
 
-            var path = System.IO.Path.GetTempFileName();
+            string path = System.IO.Path.GetTempFileName();
             await _sut.ExportDownloadAsync(GitLabApiHelper.TestProjectId, path);
 
             System.IO.File.Exists(path).Should().BeTrue();

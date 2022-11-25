@@ -9,10 +9,7 @@ namespace GitLabApiClient.Internal.Paths
 
         private UserId(string userId) => _id = userId;
 
-        public static implicit operator UserId(int userId)
-        {
-            return new UserId(userId.ToString());
-        }
+        public static implicit operator UserId(int userId) => new UserId(userId.ToString());
 
         public static implicit operator UserId(User user)
         {
