@@ -15,10 +15,7 @@ namespace GitLabApiClient
 
         internal ConnectionClient(
             GitLabHttpFacade httpFacade
-        )
-        {
-            _httpFacade = httpFacade;
-        }
+        ) => _httpFacade = httpFacade;
 
         /// <summary>
         /// Performs an asynchronous HTTP GET request.
