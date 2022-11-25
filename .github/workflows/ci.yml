@@ -33,8 +33,6 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
-      - run: dotnet tool install -g Codecov.Tool
-
       - run: dotnet tool install -g GitVersion.Tool
 
       - name: GitVersion
@@ -54,4 +52,4 @@ jobs:
       #   run: dotnet nuget push **/*.nupkg --source $Env:SOURCE --api-key $Env:TOKEN --skip-duplicate
       #   env:
       #     SOURCE: 'https://api.nuget.org/v3/index.json'
-      #     TOKEN: ${{ secrets.NUGET_API_KEY }}
+      #     TOKEN: ${{ secrets.NUGET_API_KEY }}s
