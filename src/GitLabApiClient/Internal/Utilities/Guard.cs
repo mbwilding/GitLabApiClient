@@ -37,7 +37,6 @@ namespace GitLabApiClient.Internal.Utilities
         }
 
         public static void NotNull<T>(T arg, string argName)
-            where T : class
         {
             if (arg == null)
                 throw new ArgumentException($"ArgumentException: {argName} is null");

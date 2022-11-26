@@ -83,6 +83,14 @@ namespace GitLabApiClient
         Task<Project> CreateAsync(CreateProjectRequest request);
 
         /// <summary>
+        /// Creates a new project owned by the specified user
+        /// </summary>
+        /// <param name="userId">The userId of the project owner.</param>
+        /// <param name="request">Create project request.</param>
+        /// <returns></returns>
+        Task<Project> CreateForUserAsync(int userId, CreateProjectRequest request);
+
+        /// <summary>
         /// Creates new project label.
         /// </summary>
         /// <param name="projectId">The ID, path or <see cref="Project"/> of the project.</param>

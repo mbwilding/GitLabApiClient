@@ -136,6 +136,19 @@ namespace GitLabApiClient
             return await _httpFacade.Post<Project>("projects", request);
         }
 
+        //// <summary>
+        /// Creates a new project owned by the specified user
+        /// </summary>
+        /// <param name="userId">The userId of the project owner.</param>
+        /// <param name="request">Create project request.</param>
+        /// <returns></returns>
+        public async Task<Project> CreateForUserAsync(int userId, CreateProjectRequest request)
+        {
+            Guard.NotNull(request, nameof(request));
+            request.UserId = userId;
+            return await _httpFacade.Post<Project>($"projects/user/{userId}", request);
+        }
+
         /// <summary>
         /// Creates new project label.
         /// </summary>
