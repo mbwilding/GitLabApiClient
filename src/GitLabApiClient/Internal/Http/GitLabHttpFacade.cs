@@ -20,17 +20,18 @@ namespace GitLabApiClient.Internal.Http
         private GitLabApiRequestor _requestor;
         private GitLabApiPagedRequestor _pagedRequestor;
 
-        private GitLabHttpFacade(string hostUrl, RequestsJsonSerializer jsonSerializer, HttpMessageHandler httpMessageHandler, TimeSpan? clientTimeout = null)
+        private GitLabHttpFacade(string hostUrl, RequestsJsonSerializer jsonSerializer, HttpClient httpClient, TimeSpan? clientTimeout = null)
         {
-            _httpClient = new HttpClient(httpMessageHandler ?? new HttpClientHandler()) { BaseAddress = new Uri(hostUrl) };
+            _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri(hostUrl);
             if (clientTimeout.HasValue)
                 _httpClient.Timeout = clientTimeout.Value;
 
             Setup(jsonSerializer);
         }
 
-        public GitLabHttpFacade(string hostUrl, RequestsJsonSerializer jsonSerializer, string authenticationToken = "", HttpMessageHandler httpMessageHandler = null, TimeSpan? clientTimeout = null) :
-            this(hostUrl, jsonSerializer, httpMessageHandler, clientTimeout)
+        public GitLabHttpFacade(string hostUrl, RequestsJsonSerializer jsonSerializer, string authenticationToken = "", HttpClient httpClient = null, TimeSpan? clientTimeout = null) :
+            this(hostUrl, jsonSerializer, httpClient, clientTimeout)
         {
             switch (authenticationToken.Length)
             {
