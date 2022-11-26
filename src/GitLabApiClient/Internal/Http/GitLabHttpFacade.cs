@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+
 using GitLabApiClient.Internal.Http.Serialization;
 using GitLabApiClient.Models.Oauth.Requests;
 using GitLabApiClient.Models.Oauth.Responses;
@@ -22,7 +23,7 @@ namespace GitLabApiClient.Internal.Http
 
         private GitLabHttpFacade(string hostUrl, RequestsJsonSerializer jsonSerializer, HttpClient httpClient, TimeSpan? clientTimeout = null)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClient ?? new HttpClient();
             _httpClient.BaseAddress = new Uri(hostUrl);
             if (clientTimeout.HasValue)
                 _httpClient.Timeout = clientTimeout.Value;
@@ -50,7 +51,7 @@ namespace GitLabApiClient.Internal.Http
 
         public GitLabHttpFacade(RequestsJsonSerializer jsonSerializer, HttpClient httpClient)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClient ?? new HttpClient();
             Setup(jsonSerializer);
         }
 
