@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+
 using GitLabApiClient.Internal.Http.Serialization;
 using GitLabApiClient.Models.Uploads.Requests;
 using GitLabApiClient.Models.Uploads.Responses;
@@ -19,6 +20,12 @@ namespace GitLabApiClient.Internal.Http
         {
             _client = client;
             _jsonSerializer = jsonSerializer;
+        }
+
+        public async Task<HttpResponseMessage> Head(string url)
+        {
+            var requestMessage = new HttpRequestMessage(HttpMethod.Head, url);
+            return await _client.SendAsync(requestMessage);
         }
 
         public async Task<T> Get<T>(string url)
