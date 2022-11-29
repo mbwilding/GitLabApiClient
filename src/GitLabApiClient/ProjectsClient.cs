@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+
 using GitLabApiClient.Internal.Http;
 using GitLabApiClient.Internal.Paths;
 using GitLabApiClient.Internal.Queries;
@@ -59,6 +60,16 @@ namespace GitLabApiClient
 
             string url = _queryBuilder.Build("projects", queryOptions);
             return await _httpFacade.GetPagedList<Project>(url);
+        }
+
+        /// <summary>
+        /// Get a list of projects for specified user 
+        /// </summary>
+        /// <param name="userId">Id of the user.</param>
+        /// <returns></returns>
+        public async Task<IList<Project>> GetByUser(int userId)
+        {
+            return await _httpFacade.GetPagedList<Project>($"users/{userId}/projects");
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using GitLabApiClient.Internal.Paths;
 using GitLabApiClient.Models.Job.Requests;
 using GitLabApiClient.Models.Job.Responses;
@@ -29,6 +30,13 @@ namespace GitLabApiClient
         /// </summary>
         /// <param name="options">Query options.</param>
         Task<IList<Project>> GetAsync(Action<ProjectQueryOptions> options = null);
+
+        /// <summary>
+        /// Get a list of projects for specified user 
+        /// </summary>
+        /// <param name="userId">Id of the user.</param>
+        /// <returns></returns>
+        Task<IList<Project>> GetByUser(int userId);
 
         /// <summary>
         /// Get the users list of a project.
