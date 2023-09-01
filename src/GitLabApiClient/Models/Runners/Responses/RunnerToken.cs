@@ -1,13 +1,12 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Runners.Responses
+namespace GitLabApiClient.Models.Runners.Responses;
+
+public sealed class RunnerToken
 {
-    public sealed class RunnerToken
-    {
-        [JsonProperty("id")]
-        public int Id { get; set; }
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
 
-        [JsonProperty("token")]
-        public string Token { get; set; }
-    }
+    [JsonPropertyName("token")]
+    public string Token { get; set; }
 }

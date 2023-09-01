@@ -7,11 +7,11 @@ GitLabApiClient is a .NET rest client for [GitLab API v4](https://docs.gitlab.co
 
 ## Main features
 
-- Targets .NET Standard 2.0
+- Targets netstandard2.0; netstandard2.1; net6.0; net7.0
 - Fully async
-- Thread safe.
-- Multi core paging.
-- Simple and natural to use.
+- Thread safe
+- Multi core paging
+- Simple and natural to use
 - Handles URL encoding for you
 
 ## Quick start
@@ -19,8 +19,8 @@ GitLabApiClient is a .NET rest client for [GitLab API v4](https://docs.gitlab.co
 ### Authenticate
 
 ```csharp
-// if you have auth token:
-var client =  new GitLabClient("https://gitlab.example.com", "your_private_token");
+// if you have a personal access token:
+var client = new GitLabClient("https://gitlab.example.com", "your_private_token");
 ```
 
 ```csharp

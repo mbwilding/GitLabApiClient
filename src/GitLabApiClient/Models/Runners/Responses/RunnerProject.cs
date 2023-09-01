@@ -1,23 +1,21 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Runners.Responses
+namespace GitLabApiClient.Models.Runners.Responses;
+
+public sealed class RunnerProject
 {
-    public sealed class RunnerProject
-    {
-        [JsonProperty("id")]
-        public int Id { get; set; }
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
 
-        [JsonProperty("name_with_namespace")]
-        public string NameWithNamespace { get; set; }
+    [JsonPropertyName("name_with_namespace")]
+    public string NameWithNamespace { get; set; }
 
-        [JsonProperty("path")]
-        public string Path { get; set; }
+    [JsonPropertyName("path")]
+    public string Path { get; set; }
 
-        [JsonProperty("path_with_namespace")]
-        public string PathWithNamespace { get; set; }
-    }
-
+    [JsonPropertyName("path_with_namespace")]
+    public string PathWithNamespace { get; set; }
 }

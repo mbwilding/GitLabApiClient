@@ -1,12 +1,11 @@
-namespace GitLabApiClient.Models.Projects.Requests
+namespace GitLabApiClient.Models.Projects.Requests;
+
+public enum ProjectsOrder
 {
-    public enum ProjectsOrder
-    {
-        CreatedAt,
-        UpdatedAt,
-        LastActivityAt,
-        Id,
-        Name,
-        Path
-    }
+    CreatedAt,
+    UpdatedAt,
+    LastActivityAt,
+    Id,
+    Name,
+    Path
 }

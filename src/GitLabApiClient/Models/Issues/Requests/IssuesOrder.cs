@@ -1,8 +1,7 @@
-namespace GitLabApiClient.Models.Issues.Requests
+namespace GitLabApiClient.Models.Issues.Requests;
+
+public enum IssuesOrder
 {
-    public enum IssuesOrder
-    {
-        CreatedAt,
-        UpdatedAt
-    }
+    CreatedAt,
+    UpdatedAt
 }

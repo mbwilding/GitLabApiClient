@@ -1,19 +1,18 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.MergeRequests.Responses
+namespace GitLabApiClient.Models.MergeRequests.Responses;
+
+public class MergeRequestTimeStatistic
 {
-    public class MergeRequestTimeStatistic
-    {
-        [JsonProperty("time_estimate")]
-        public int TimeEstimate { get; set; }
+    [JsonPropertyName("time_estimate")]
+    public int TimeEstimate { get; set; }
 
-        [JsonProperty("total_time_spent")]
-        public int TotalTimeSpent { get; set; }
+    [JsonPropertyName("total_time_spent")]
+    public int TotalTimeSpent { get; set; }
 
-        [JsonProperty("human_time_estimate")]
-        public string HumanTimeEstimate { get; set; }
+    [JsonPropertyName("human_time_estimate")]
+    public string HumanTimeEstimate { get; set; }
 
-        [JsonProperty("human_total_time_spent")]
-        public string HumanTotalTimeSpent { get; set; }
-    }
+    [JsonPropertyName("human_total_time_spent")]
+    public string HumanTotalTimeSpent { get; set; }
 }

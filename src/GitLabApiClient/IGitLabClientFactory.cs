@@ -1,7 +1,6 @@
-﻿namespace GitLabApiClient
+﻿namespace GitLabApiClient;
+
+public interface IGitLabClientFactory
 {
-    public interface IGitLabClientFactory
-    {
-        IGitLabClient CreateClient();
-    }
+    IGitLabClient CreateClient();
 }

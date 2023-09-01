@@ -1,29 +1,28 @@
 using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Commits.Responses
+namespace GitLabApiClient.Models.Commits.Responses;
+
+public sealed class Author
 {
-    public sealed class Author
-    {
-        [JsonProperty("id")]
-        public int Id { get; set; }
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
 
-        [JsonProperty("state")]
-        public string State { get; set; }
+    [JsonPropertyName("state")]
+    public string State { get; set; }
 
-        [JsonProperty("avatar_url")]
-        public string AvatarUrl { get; set; }
+    [JsonPropertyName("avatar_url")]
+    public string AvatarUrl { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
 
-        [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
+    [JsonPropertyName("created_at")]
+    public DateTime CreatedAt { get; set; }
 
-        [JsonProperty("username")]
-        public string Username { get; set; }
+    [JsonPropertyName("username")]
+    public string Username { get; set; }
 
-        [JsonProperty("web_url")]
-        public string WebUrl { get; set; }
-    }
+    [JsonPropertyName("web_url")]
+    public string WebUrl { get; set; }
 }

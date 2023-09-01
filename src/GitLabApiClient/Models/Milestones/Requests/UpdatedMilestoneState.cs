@@ -1,13 +1,12 @@
-using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Milestones.Requests
+namespace GitLabApiClient.Models.Milestones.Requests;
+
+public enum UpdatedMilestoneState
 {
-    public enum UpdatedMilestoneState
-    {
-        [EnumMember(Value = "close")]
-        Close,
+    [JsonPropertyName("close")]
+    Close,
 
-        [EnumMember(Value = "activate")]
-        Activate
-    }
+    [JsonPropertyName("activate")]
+    Activate
 }

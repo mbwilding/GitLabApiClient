@@ -1,16 +1,15 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Releases.Responses
+namespace GitLabApiClient.Models.Releases.Responses;
+
+public sealed class Asset
 {
-    public sealed class Asset
-    {
-        [JsonProperty("count")]
-        public int Count { get; set; }
+    [JsonPropertyName("count")]
+    public int Count { get; set; }
 
-        [JsonProperty("sources")]
-        public Source[] Sources { get; set; }
+    [JsonPropertyName("sources")]
+    public Source[] Sources { get; set; }
 
-        [JsonProperty("links")]
-        public Link[] Links { get; set; }
-    }
+    [JsonPropertyName("links")]
+    public Link[] Links { get; set; }
 }

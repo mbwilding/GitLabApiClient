@@ -1,71 +1,67 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0</TargetFrameworks>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Copyright />
-    <Description>GitLabApiClient is a .NET rest client for GitLab API v4.</Description>
-    <Authors>nmklotas</Authors>
-    <PackageProjectUrl>https://github.com/cnblogs/GitLabApiClient</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/cnblogs/GitLabApiClient</RepositoryUrl>
-    <PackageTags>GitLab REST API CI Client</PackageTags>
-    <PackageId>Cnblogs.GitLabApiClient</PackageId>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Company>nmklotas</Company>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <IncludeSymbols>true</IncludeSymbols>
-    <UseFullSemVerForNuGet>true</UseFullSemVerForNuGet>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0</TargetFrameworks>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <Copyright/>
+        <Description>GitLabApiClient is a .NET rest client for GitLab API v4.</Description>
+        <Authors>nmklotas</Authors>
+        <PackageProjectUrl>https://github.com/cnblogs/GitLabApiClient</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/cnblogs/GitLabApiClient</RepositoryUrl>
+        <PackageTags>GitLab REST API CI Client</PackageTags>
+        <PackageId>Cnblogs.GitLabApiClient</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Company>nmklotas</Company>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+        <UseFullSemVerForNuGet>true</UseFullSemVerForNuGet>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-  </PropertyGroup>
+    <PropertyGroup Condition=" '$(GITHUB_ACTIONS)' == 'true'">
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    </PropertyGroup>
 
-  <Choose>
-    <When Condition="'$(TargetFramework)' == 'net6.0' Or '$(TargetFramework)' == 'net7.0'">
-      <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
+    <Choose>
+        <When Condition="'$(TargetFramework)' == 'net6.0' Or '$(TargetFramework)' == 'net7.0'">
+            <ItemGroup>
+                <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <ItemGroup>
+                <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0"/>
+                <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0"/>
+                <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0"/>
+                <PackageReference Include="System.Text.Json" Version="7.0.3"/>
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.3" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.3"/>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+    </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
-    <Reference Include="System.Net.Http" />
-  </ItemGroup>
-
-  <!-- Workaround for https://github.com/GitTools/GitVersion/issues/1031 -->
-  <PropertyGroup Condition=" '$(GitVersion_SemVer)' != ''">
-    <GetVersion>false</GetVersion>
-    <WriteVersionInfoToBuildLog>false</WriteVersionInfoToBuildLog>
-    <UpdateAssemblyInfo>false</UpdateAssemblyInfo>
-
-    <Version>$(GitVersion_FullSemVer)</Version>
-    <VersionPrefix>$(GitVersion_MajorMinorPatch)</VersionPrefix>
-    <VersionSuffix Condition=" '$(UseFullSemVerForNuGet)' == 'false' ">$(GitVersion_NuGetPreReleaseTag)</VersionSuffix>
-    <VersionSuffix Condition=" '$(UseFullSemVerForNuGet)' == 'true' ">$(GitVersion_PreReleaseTag)</VersionSuffix>
-    <PackageVersion Condition=" '$(UseFullSemVerForNuGet)' == 'false' ">$(GitVersion_NuGetVersion)</PackageVersion>
-    <PackageVersion Condition=" '$(UseFullSemVerForNuGet)' == 'true' ">$(GitVersion_FullSemVer)</PackageVersion>
-    <InformationalVersion Condition=" '$(InformationalVersion)' == '' ">$(GitVersion_InformationalVersion)</InformationalVersion>
-    <AssemblyVersion Condition=" '$(AssemblyVersion)' == '' ">$(GitVersion_AssemblySemVer)</AssemblyVersion>
-    <FileVersion Condition=" '$(FileVersion)' == '' ">$(GitVersion_AssemblySemFileVer)</FileVersion>
-    <RepositoryBranch Condition=" '$(RepositoryBranch)' == '' ">$(GitVersion_BranchName)</RepositoryBranch>
-    <RepositoryCommit Condition=" '$(RepositoryCommit)' == '' ">$(GitVersion_Sha)</RepositoryCommit>
-  </PropertyGroup>
+    <!-- Workaround for https://github.com/GitTools/GitVersion/issues/1031 -->
+    <PropertyGroup Condition=" '$(GitVersion_SemVer)' != ''">
+        <GetVersion>false</GetVersion>
+        <WriteVersionInfoToBuildLog>false</WriteVersionInfoToBuildLog>
+        <UpdateAssemblyInfo>false</UpdateAssemblyInfo>
+        <Version>$(GitVersion_FullSemVer)</Version>
+        <VersionPrefix>$(GitVersion_MajorMinorPatch)</VersionPrefix>
+        <VersionSuffix Condition=" '$(UseFullSemVerForNuGet)' == 'false' ">$(GitVersion_NuGetPreReleaseTag)</VersionSuffix>
+        <VersionSuffix Condition=" '$(UseFullSemVerForNuGet)' == 'true' ">$(GitVersion_PreReleaseTag)</VersionSuffix>
+        <PackageVersion Condition=" '$(UseFullSemVerForNuGet)' == 'false' ">$(GitVersion_NuGetVersion)</PackageVersion>
+        <PackageVersion Condition=" '$(UseFullSemVerForNuGet)' == 'true' ">$(GitVersion_FullSemVer)</PackageVersion>
+        <InformationalVersion Condition=" '$(InformationalVersion)' == '' ">$(GitVersion_InformationalVersion)</InformationalVersion>
+        <AssemblyVersion Condition=" '$(AssemblyVersion)' == '' ">$(GitVersion_AssemblySemVer)</AssemblyVersion>
+        <FileVersion Condition=" '$(FileVersion)' == '' ">$(GitVersion_AssemblySemFileVer)</FileVersion>
+        <RepositoryBranch Condition=" '$(RepositoryBranch)' == '' ">$(GitVersion_BranchName)</RepositoryBranch>
+        <RepositoryCommit Condition=" '$(RepositoryCommit)' == '' ">$(GitVersion_Sha)</RepositoryCommit>
+    </PropertyGroup>
 
 </Project>

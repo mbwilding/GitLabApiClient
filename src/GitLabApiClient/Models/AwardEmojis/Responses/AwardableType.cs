@@ -1,10 +1,9 @@
-namespace GitLabApiClient.Models.AwardEmojis.Responses
+namespace GitLabApiClient.Models.AwardEmojis.Responses;
+
+public enum AwardableType
 {
-    public enum AwardableType
-    {
-        Issue,
-        MergeRequest,
-        Note,
-        Snippet,
-    }
+    Issue,
+    MergeRequest,
+    Note,
+    Snippet,
 }

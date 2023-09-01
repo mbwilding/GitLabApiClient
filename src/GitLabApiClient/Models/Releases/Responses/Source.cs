@@ -1,13 +1,12 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Releases.Responses
+namespace GitLabApiClient.Models.Releases.Responses;
+
+public sealed class Source
 {
-    public sealed class Source
-    {
-        [JsonProperty("format")]
-        public string Format { get; set; }
+    [JsonPropertyName("format")]
+    public string Format { get; set; }
 
-        [JsonProperty("url")]
-        public string Url { get; set; }
-    }
+    [JsonPropertyName("url")]
+    public string Url { get; set; }
 }

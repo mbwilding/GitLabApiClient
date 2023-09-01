@@ -6,68 +6,67 @@ using FluentAssertions;
 using GitLabApiClient.Models.Issues.Requests;
 using Xunit;
 
-namespace GitLabApiClient.Test.Inspections
+namespace GitLabApiClient.Test.Inspections;
+
+public class RequestsInspectionTest
 {
-    public class RequestsInspectionTest
+    [Fact]
+    public void AllRequestsDoesNotHaveBoolProperties()
     {
-        [Fact]
-        public void AllRequestsDoesNotHaveBoolProperties()
+        var requestClasses = GetRequestClasses();
+
+        foreach (var requestClass in requestClasses)
         {
-            var requestClasses = GetRequestClasses();
+            var boolProperties = requestClass.GetProperties(BindingFlags.Public | BindingFlags.Instance).
+                Where(p => p.PropertyType == typeof(bool)).
+                ToList();
 
-            foreach (var requestClass in requestClasses)
-            {
-                var boolProperties = requestClass.GetProperties(BindingFlags.Public | BindingFlags.Instance).
-                    Where(p => p.PropertyType == typeof(bool)).
-                    ToList();
-
-                boolProperties.Should().BeEmpty($"Request class should not have bool property. Use bool?. Class name: {requestClass.Name}.");
-            }
+            boolProperties.Should().BeEmpty($"Request class should not have bool property. Use bool?. Class name: {requestClass.Name}.");
         }
+    }
 
-        [Fact]
-        public void AllRequestsDoesNotHaveEnumProperties()
+    [Fact]
+    public void AllRequestsDoesNotHaveEnumProperties()
+    {
+        var requestClasses = GetRequestClasses();
+
+        foreach (var requestClass in requestClasses)
         {
-            var requestClasses = GetRequestClasses();
+            var enumProperties = requestClass.GetProperties(BindingFlags.Public | BindingFlags.Instance).
+                Where(p => p.PropertyType.IsEnum).
+                ToList();
 
-            foreach (var requestClass in requestClasses)
-            {
-                var enumProperties = requestClass.GetProperties(BindingFlags.Public | BindingFlags.Instance).
-                    Where(p => p.PropertyType.IsEnum).
-                    ToList();
-
-                enumProperties.Should().BeEmpty($"Request class should not have enum property Use enum?. Class name: {requestClass.Name}.");
-            }
+            enumProperties.Should().BeEmpty($"Request class should not have enum property Use enum?. Class name: {requestClass.Name}.");
         }
+    }
 
-        [Fact]
-        public void AllRequestsDoesNotHaveWritableIntProperties()
+    [Fact]
+    public void AllRequestsDoesNotHaveWritableIntProperties()
+    {
+        var requestClasses = GetRequestClasses();
+
+
+        foreach (var requestClass in requestClasses)
         {
-            var requestClasses = GetRequestClasses();
+            var intProperties = requestClass.GetProperties(BindingFlags.Public | BindingFlags.Instance).
+                Where(p => p.PropertyType == typeof(int) || p.PropertyType == typeof(uint) || p.PropertyType == typeof(long)).
+                Where(p => p.SetMethod != null && p.SetMethod.IsPublic).
+                ToList();
 
-
-            foreach (var requestClass in requestClasses)
-            {
-                var intProperties = requestClass.GetProperties(BindingFlags.Public | BindingFlags.Instance).
-                    Where(p => p.PropertyType == typeof(int) || p.PropertyType == typeof(uint) || p.PropertyType == typeof(long)).
-                    Where(p => p.SetMethod != null && p.SetMethod.IsPublic).
-                    ToList();
-
-                intProperties.Should().BeEmpty($"Request class should not have numeric property Use numeric?. Class name: {requestClass.Name}.");
-            }
+            intProperties.Should().BeEmpty($"Request class should not have numeric property Use numeric?. Class name: {requestClass.Name}.");
         }
+    }
 
-        private static IEnumerable<Type> GetRequestClasses()
+    private static IEnumerable<Type> GetRequestClasses()
+    {
+        var ignoreClasses = new List<string>
         {
-            var ignoreClasses = new List<string>
-            {
-                "MergeRequest"
-            };
+            "MergeRequest"
+        };
 
-            return typeof(CreateIssueRequest).Assembly.GetExportedTypes().
-                Where(t => t.Name.EndsWith("Request", StringComparison.OrdinalIgnoreCase)).
-                Where(t => !ignoreClasses.Contains(t.Name)).
-                Where(t => t.IsClass);
-        }
+        return typeof(CreateIssueRequest).Assembly.GetExportedTypes().
+            Where(t => t.Name.EndsWith("Request", StringComparison.OrdinalIgnoreCase)).
+            Where(t => !ignoreClasses.Contains(t.Name)).
+            Where(t => t.IsClass);
     }
 }

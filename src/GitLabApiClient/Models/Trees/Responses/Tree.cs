@@ -1,22 +1,21 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Trees.Responses
+namespace GitLabApiClient.Models.Trees.Responses;
+
+public sealed class Tree
 {
-    public sealed class Tree
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
 
-        [JsonProperty("type")]
-        public string Type { get; set; }
+    [JsonPropertyName("type")]
+    public string Type { get; set; }
 
-        [JsonProperty("path")]
-        public string Path { get; set; }
+    [JsonPropertyName("path")]
+    public string Path { get; set; }
 
-        [JsonProperty("mode")]
-        public string Mode { get; set; }
-    }
+    [JsonPropertyName("mode")]
+    public string Mode { get; set; }
 }

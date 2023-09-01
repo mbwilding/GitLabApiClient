@@ -5,10 +5,9 @@ using GitLabApiClient.Internal.Paths;
 using GitLabApiClient.Models.Trees.Requests;
 using GitLabApiClient.Models.Trees.Responses;
 
-namespace GitLabApiClient
+namespace GitLabApiClient;
+
+public interface ITreesClient
 {
-    public interface ITreesClient
-    {
-        Task<IList<Tree>> GetAsync(ProjectId projectId, Action<TreeQueryOptions> options = null);
-    }
+    Task<IList<Tree>> GetAsync(ProjectId projectId, Action<TreeQueryOptions> options = null);
 }

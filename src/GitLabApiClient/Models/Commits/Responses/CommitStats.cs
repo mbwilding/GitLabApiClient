@@ -1,14 +1,13 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Commits.Responses
+namespace GitLabApiClient.Models.Commits.Responses;
+
+public class CommitStats
 {
-    public class CommitStats
-    {
-        [JsonProperty("additions")]
-        public int Additions { get; set; }
-        [JsonProperty("deletions")]
-        public int Deletions { get; set; }
-        [JsonProperty("total")]
-        public int Total { get; set; }
-    }
+    [JsonPropertyName("additions")]
+    public int Additions { get; set; }
+    [JsonPropertyName("deletions")]
+    public int Deletions { get; set; }
+    [JsonPropertyName("total")]
+    public int Total { get; set; }
 }

@@ -2,10 +2,9 @@ using System.Threading.Tasks;
 using GitLabApiClient.Models.Markdown.Request;
 using GitLabApiClient.Models.Markdown.Response;
 
-namespace GitLabApiClient
+namespace GitLabApiClient;
+
+public interface IMarkdownClient
 {
-    public interface IMarkdownClient
-    {
-        Task<Markdown> RenderAsync(RenderMarkdownRequest request);
-    }
+    Task<Markdown> RenderAsync(RenderMarkdownRequest request);
 }

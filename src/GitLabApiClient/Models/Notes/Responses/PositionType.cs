@@ -1,8 +1,7 @@
-namespace GitLabApiClient.Models.Notes.Responses
+namespace GitLabApiClient.Models.Notes.Responses;
+
+public enum PositionType
 {
-    public enum PositionType
-    {
-        Text,
-        Image
-    }
+    Text,
+    Image
 }

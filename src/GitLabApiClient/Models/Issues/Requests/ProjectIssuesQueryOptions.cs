@@ -1,19 +1,18 @@
 using System;
 
-namespace GitLabApiClient.Models.Issues.Requests
+namespace GitLabApiClient.Models.Issues.Requests;
+
+/// <inheritdoc />
+/// <summary>
+/// Options for project issues listing
+/// </summary>
+[Obsolete("Use IssuesQueryOptions instead")]
+public sealed class ProjectIssuesQueryOptions : IssuesQueryOptions
 {
-    /// <inheritdoc />
     /// <summary>
-    /// Options for project issues listing
+    /// Initializes a new instance of ProjectIssuesQueryOptions
     /// </summary>
-    [Obsolete("Use IssuesQueryOptions instead")]
-    public sealed class ProjectIssuesQueryOptions : IssuesQueryOptions
+    internal ProjectIssuesQueryOptions()
     {
-        /// <summary>
-        /// Initializes a new instance of ProjectIssuesQueryOptions
-        /// </summary>
-        internal ProjectIssuesQueryOptions()
-        {
-        }
     }
 }

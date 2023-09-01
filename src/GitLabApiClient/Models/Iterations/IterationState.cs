@@ -1,11 +1,10 @@
-namespace GitLabApiClient.Models.Iterations
+namespace GitLabApiClient.Models.Iterations;
+
+public enum IterationState
 {
-    public enum IterationState
-    {
-        Opened,
-        Upcoming,
-        Current,
-        Closed,
-        All
-    }
+    Opened,
+    Upcoming,
+    Current,
+    Closed,
+    All
 }

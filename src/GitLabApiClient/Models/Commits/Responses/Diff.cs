@@ -1,31 +1,30 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Commits.Responses
+namespace GitLabApiClient.Models.Commits.Responses;
+
+public sealed class Diff
 {
-    public sealed class Diff
-    {
-        [JsonProperty("diff")]
-        public string DiffText { get; set; }
+    [JsonPropertyName("diff")]
+    public string DiffText { get; set; }
 
-        [JsonProperty("new_path")]
-        public string NewPath { get; set; }
+    [JsonPropertyName("new_path")]
+    public string NewPath { get; set; }
 
-        [JsonProperty("old_path")]
-        public string OldPath { get; set; }
+    [JsonPropertyName("old_path")]
+    public string OldPath { get; set; }
 
-        [JsonProperty("a_mode")]
-        public string AMode { get; set; }
+    [JsonPropertyName("a_mode")]
+    public string AMode { get; set; }
 
-        [JsonProperty("b_mode")]
-        public string BMode { get; set; }
+    [JsonPropertyName("b_mode")]
+    public string BMode { get; set; }
 
-        [JsonProperty("new_file")]
-        public bool IsNewFile { get; set; }
+    [JsonPropertyName("new_file")]
+    public bool IsNewFile { get; set; }
 
-        [JsonProperty("renamed_file")]
-        public bool IsRenamedFile { get; set; }
+    [JsonPropertyName("renamed_file")]
+    public bool IsRenamedFile { get; set; }
 
-        [JsonProperty("deleted_file")]
-        public bool IsDeletedFile { get; set; }
-    }
+    [JsonPropertyName("deleted_file")]
+    public bool IsDeletedFile { get; set; }
 }

@@ -4,31 +4,30 @@ using GitLabApiClient.Models.Users.Responses;
 using Xunit;
 using static GitLabApiClient.Test.Utilities.GitLabApiHelper;
 
-namespace GitLabApiClient.Test.Internal.Http
-{
-    //TODO this is currently not working for root user...
-    // [Collection("GitLabContainerFixture")]
-    // public class GitLabHttpFacadeTest
-    // {
-    //     [Fact]
-    //     public async Task CanLogin()
-    //     {
-    //         //arrange
-    //         var sut = GetFacade();
+namespace GitLabApiClient.Test.Internal.Http;
 
-    //         //act
-    //         var session = await sut.LoginAsync(TestUserName, TestPassword);
+//TODO this is currently not working for root user...
+// [Collection("GitLabContainerFixture")]
+// public class GitLabHttpFacadeTest
+// {
+//     [Fact]
+//     public async Task CanLogin()
+//     {
+//         //arrange
+//         var sut = GetFacade();
 
-    //         //assert
-    //         session.Should().Match<Session>(s =>
-    //             s.CanCreateGroup &&
-    //             s.CanCreateProject &&
-    //             s.IsAdmin &&
-    //             !s.TwoFactorEnabled &&
-    //             s.Username == TestUserName &&
-    //             s.Name == TestName);
+//         //act
+//         var session = await sut.LoginAsync(TestUserName, TestPassword);
 
-    //         session.PrivateToken.Should().NotBeNullOrEmpty();
-    //     }
-    // }
-}
+//         //assert
+//         session.Should().Match<Session>(s =>
+//             s.CanCreateGroup &&
+//             s.CanCreateProject &&
+//             s.IsAdmin &&
+//             !s.TwoFactorEnabled &&
+//             s.Username == TestUserName &&
+//             s.Name == TestName);
+
+//         session.PrivateToken.Should().NotBeNullOrEmpty();
+//     }
+// }

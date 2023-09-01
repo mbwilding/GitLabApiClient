@@ -1,8 +1,7 @@
-namespace GitLabApiClient.Models.MergeRequests.Requests
+namespace GitLabApiClient.Models.MergeRequests.Requests;
+
+public enum MergeRequestsOrder
 {
-    public enum MergeRequestsOrder
-    {
-        CreatedAt,
-        UpdatedAt
-    }
+    CreatedAt,
+    UpdatedAt
 }

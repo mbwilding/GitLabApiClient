@@ -1,8 +1,7 @@
-namespace GitLabApiClient.Models.Notes.Requests
+namespace GitLabApiClient.Models.Notes.Requests;
+
+public enum NoteOrder
 {
-    public enum NoteOrder
-    {
-        CreatedAt,
-        UpdatedAt
-    }
+    CreatedAt,
+    UpdatedAt
 }

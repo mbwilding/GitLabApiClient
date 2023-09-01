@@ -1,12 +1,11 @@
 using System.Runtime.Serialization;
 
-namespace GitLabApiClient.Models.MergeRequests.Requests
+namespace GitLabApiClient.Models.MergeRequests.Requests;
+
+public enum RequestedMergeRequestState
 {
-    public enum RequestedMergeRequestState
-    {
-        [EnumMember(Value = "close")]
-        Close,
-        [EnumMember(Value = "reopen")]
-        Reopen
-    }
+    [EnumMember(Value = "close")]
+    Close,
+    [EnumMember(Value = "reopen")]
+    Reopen
 }

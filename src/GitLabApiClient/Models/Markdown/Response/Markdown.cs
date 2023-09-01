@@ -1,10 +1,9 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Markdown.Response
+namespace GitLabApiClient.Models.Markdown.Response;
+
+public sealed class Markdown
 {
-    public sealed class Markdown
-    {
-        [JsonProperty("html")]
-        public string Html { get; set; }
-    }
+    [JsonPropertyName("html")]
+    public string Html { get; set; }
 }

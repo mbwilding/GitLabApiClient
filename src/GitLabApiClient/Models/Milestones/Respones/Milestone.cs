@@ -1,31 +1,30 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Milestones.Responses
+namespace GitLabApiClient.Models.Milestones.Responses;
+
+public sealed class Milestone : ModifiableObject
 {
-    public sealed class Milestone : ModifiableObject
-    {
-        [JsonProperty("description")]
-        public string Description { get; set; }
+    [JsonPropertyName("description")]
+    public string Description { get; set; }
 
-        [JsonProperty("due_date")]
-        public string DueDate { get; set; }
+    [JsonPropertyName("due_date")]
+    public string DueDate { get; set; }
 
-        [JsonProperty("start_date")]
-        public string StartDate { get; set; }
+    [JsonPropertyName("start_date")]
+    public string StartDate { get; set; }
 
-        [JsonProperty("project_id")]
-        public int? ProjectId { get; set; }
+    [JsonPropertyName("project_id")]
+    public int? ProjectId { get; set; }
 
-        [JsonProperty("group_id")]
-        public int? GroupId { get; set; }
+    [JsonPropertyName("group_id")]
+    public int? GroupId { get; set; }
 
-        [JsonProperty("title")]
-        public string Title { get; set; }
+    [JsonPropertyName("title")]
+    public string Title { get; set; }
 
-        [JsonProperty("web_url")]
-        public string WebUrl { get; set; }
+    [JsonPropertyName("web_url")]
+    public string WebUrl { get; set; }
 
-        [JsonProperty("state")]
-        public MilestoneState State { get; set; }
-    }
+    [JsonPropertyName("state")]
+    public MilestoneState State { get; set; }
 }

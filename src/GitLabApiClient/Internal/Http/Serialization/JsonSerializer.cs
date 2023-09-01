@@ -1,22 +1,20 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Internal.Http.Serialization
+namespace GitLabApiClient.Internal.Http.Serialization;
+
+public sealed class RequestsJsonSerializer
 {
-    internal sealed class RequestsJsonSerializer
+    private static readonly JsonSerializerOptions Settings;
+
+    static RequestsJsonSerializer() => Settings = new JsonSerializerOptions
     {
-        private static readonly JsonSerializerSettings Settings;
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+        PropertyNameCaseInsensitive = true,
+        AllowTrailingCommas = true
+    };
 
-        static RequestsJsonSerializer()
-            => Settings = new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                ContractResolver = new EmptyCollectionContractResolver(),
-                Converters = { new StringEnumConverter() }
-            };
+    public string Serialize(object obj) => JsonSerializer.Serialize(obj, Settings);
 
-        public string Serialize(object obj) => JsonConvert.SerializeObject(obj, Settings);
-
-        public T Deserialize<T>(string serializeJson) => JsonConvert.DeserializeObject<T>(serializeJson, Settings);
-    }
+    public T Deserialize<T>(string serializeJson) => JsonSerializer.Deserialize<T>(serializeJson, Settings)!;
 }

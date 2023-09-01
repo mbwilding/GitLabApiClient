@@ -1,12 +1,11 @@
 using System.Runtime.Serialization;
 
-namespace GitLabApiClient.Models.Commits.Requests.CreateCommitRequest
+namespace GitLabApiClient.Models.Commits.Requests.CreateCommitRequest;
+
+public enum CreateCommitRequestActionEncoding
 {
-    public enum CreateCommitRequestActionEncoding
-    {
-        [EnumMember(Value = "text")]
-        Text,
-        [EnumMember(Value = "base64")]
-        Base64
-    }
+    [EnumMember(Value = "text")]
+    Text,
+    [EnumMember(Value = "base64")]
+    Base64
 }

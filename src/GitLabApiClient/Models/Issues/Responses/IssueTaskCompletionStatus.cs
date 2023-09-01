@@ -1,13 +1,12 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Issues.Responses
+namespace GitLabApiClient.Models.Issues.Responses;
+
+public class IssueTaskCompletionStatus
 {
-    public class IssueTaskCompletionStatus
-    {
-        [JsonProperty("count")]
-        public int Count { get; set; }
+    [JsonPropertyName("count")]
+    public int Count { get; set; }
 
-        [JsonProperty("completed_count")]
-        public int Completed { get; set; }
-    }
+    [JsonPropertyName("completed_count")]
+    public int Completed { get; set; }
 }

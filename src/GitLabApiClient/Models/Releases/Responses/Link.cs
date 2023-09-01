@@ -1,19 +1,18 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Releases.Responses
+namespace GitLabApiClient.Models.Releases.Responses;
+
+public sealed class Link
 {
-    public sealed class Link
-    {
-        [JsonProperty("id")]
-        public int Id { get; set; }
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
 
-        [JsonProperty("url")]
-        public string Url { get; set; }
+    [JsonPropertyName("url")]
+    public string Url { get; set; }
 
-        [JsonProperty("external")]
-        public bool External { get; set; }
-    }
+    [JsonPropertyName("external")]
+    public bool External { get; set; }
 }

@@ -1,13 +1,12 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Projects.Requests
+namespace GitLabApiClient.Models.Projects.Requests;
+
+public class TransferProjectRequest
 {
-    public class TransferProjectRequest
-    {
-        /// <summary>
-        /// The ID or path of the namespace to transfer to project to
-        /// </summary>
-        [JsonProperty("namespace")]
-        public string NameSpace { get; set; }
-    }
+    /// <summary>
+    /// The ID or path of the namespace to transfer to project to
+    /// </summary>
+    [JsonPropertyName("namespace")]
+    public string NameSpace { get; set; }
 }

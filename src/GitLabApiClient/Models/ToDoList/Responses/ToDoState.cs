@@ -1,13 +1,12 @@
 using System.Runtime.Serialization;
 
-namespace GitLabApiClient.Models.ToDoList.Responses
-{
-    public enum ToDoState
-    {
-        [EnumMember(Value = "pending")]
-        Pending,
+namespace GitLabApiClient.Models.ToDoList.Responses;
 
-        [EnumMember(Value = "done")]
-        Done,
-    }
+public enum ToDoState
+{
+    [EnumMember(Value = "pending")]
+    Pending,
+
+    [EnumMember(Value = "done")]
+    Done,
 }

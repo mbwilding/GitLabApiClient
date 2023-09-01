@@ -1,11 +1,10 @@
 using GitLabApiClient.Models.Releases.Requests;
 
-namespace GitLabApiClient.Internal.Queries
+namespace GitLabApiClient.Internal.Queries;
+
+class ReleaseQueryBuilder : QueryBuilder<ReleaseQueryOptions>
 {
-    class ReleaseQueryBuilder : QueryBuilder<ReleaseQueryOptions>
+    protected override void BuildCore(Query query, ReleaseQueryOptions options)
     {
-        protected override void BuildCore(Query query, ReleaseQueryOptions options)
-        {
-        }
     }
 }

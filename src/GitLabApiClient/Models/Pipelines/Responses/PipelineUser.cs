@@ -1,26 +1,25 @@
 using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Pipelines.Responses
+namespace GitLabApiClient.Models.Pipelines.Responses;
+
+public class PipelineUser
 {
-    public class PipelineUser
-    {
-        [JsonProperty("id")]
-        public int Id { get; set; }
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
 
-        [JsonProperty("username")]
-        public string Username { get; set; }
+    [JsonPropertyName("username")]
+    public string Username { get; set; }
 
-        [JsonProperty("state")]
-        public string State { get; set; }
+    [JsonPropertyName("state")]
+    public string State { get; set; }
 
-        [JsonProperty("avatar_url")]
-        public Uri AvatarUrl { get; set; }
+    [JsonPropertyName("avatar_url")]
+    public Uri AvatarUrl { get; set; }
 
-        [JsonProperty("web_url")]
-        public Uri WebUrl { get; set; }
-    }
+    [JsonPropertyName("web_url")]
+    public Uri WebUrl { get; set; }
 }

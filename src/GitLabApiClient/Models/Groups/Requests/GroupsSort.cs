@@ -1,13 +1,12 @@
 using System.Runtime.Serialization;
 
-namespace GitLabApiClient.Models.Groups.Requests
-{
-    public enum GroupsSort
-    {
-        [EnumMember(Value = "asc")]
-        Ascending,
+namespace GitLabApiClient.Models.Groups.Requests;
 
-        [EnumMember(Value = "desc")]
-        Descending
-    }
+public enum GroupsSort
+{
+    [EnumMember(Value = "asc")]
+    Ascending,
+
+    [EnumMember(Value = "desc")]
+    Descending
 }

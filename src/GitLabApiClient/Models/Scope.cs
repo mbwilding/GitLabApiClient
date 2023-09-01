@@ -1,9 +1,8 @@
-namespace GitLabApiClient.Models
+namespace GitLabApiClient.Models;
+
+public enum Scope
 {
-    public enum Scope
-    {
-        All,
-        CreatedByMe,
-        AssignedToMe
-    }
+    All,
+    CreatedByMe,
+    AssignedToMe
 }

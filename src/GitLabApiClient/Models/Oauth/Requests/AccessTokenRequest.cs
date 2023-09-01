@@ -1,19 +1,18 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Oauth.Requests
+namespace GitLabApiClient.Models.Oauth.Requests;
+
+public class AccessTokenRequest
 {
-    public class AccessTokenRequest
-    {
-        [JsonProperty("grant_type")]
-        public string GrantType { get; set; }
+    [JsonPropertyName("grant_type")]
+    public string GrantType { get; set; }
 
-        [JsonProperty("scope")]
-        public string Scope { get; set; }
+    [JsonPropertyName("scope")]
+    public string Scope { get; set; }
 
-        [JsonProperty("username")]
-        public string Username { get; set; }
+    [JsonPropertyName("username")]
+    public string Username { get; set; }
 
-        [JsonProperty("password")]
-        public string Password { get; set; }
-    }
+    [JsonPropertyName("password")]
+    public string Password { get; set; }
 }

@@ -1,7 +1,6 @@
-namespace GitLabApiClient.Models.Runners.Requests
+namespace GitLabApiClient.Models.Runners.Requests;
+
+public class RunnerQueryOptions
 {
-    public class RunnerQueryOptions
-    {
-        internal RunnerQueryOptions() { }
-    }
+    internal RunnerQueryOptions() { }
 }

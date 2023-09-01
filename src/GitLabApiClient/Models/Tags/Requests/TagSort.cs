@@ -1,8 +1,7 @@
-namespace GitLabApiClient.Models.Tags.Requests
+namespace GitLabApiClient.Models.Tags.Requests;
+
+public enum TagSort
 {
-    public enum TagSort
-    {
-        Asc,
-        Desc
-    }
+    Asc,
+    Desc
 }

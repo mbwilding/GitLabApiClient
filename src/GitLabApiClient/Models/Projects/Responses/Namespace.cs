@@ -1,22 +1,21 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Projects.Responses
+namespace GitLabApiClient.Models.Projects.Responses;
+
+public sealed class Namespace
 {
-    public sealed class Namespace
-    {
-        [JsonProperty("id")]
-        public int Id { get; set; }
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
 
-        [JsonProperty("full_path")]
-        public string FullPath { get; set; }
+    [JsonPropertyName("full_path")]
+    public string FullPath { get; set; }
 
-        [JsonProperty("kind")]
-        public string Kind { get; set; }
+    [JsonPropertyName("kind")]
+    public string Kind { get; set; }
 
-        [JsonProperty("path")]
-        public string Path { get; set; }
-    }
+    [JsonPropertyName("path")]
+    public string Path { get; set; }
 }

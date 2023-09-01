@@ -1,25 +1,24 @@
 using GitLabApiClient.Models.Groups.Requests;
 
-namespace GitLabApiClient.Internal.Queries
+namespace GitLabApiClient.Internal.Queries;
+
+internal class GroupLabelsQueryBuilder : QueryBuilder<GroupLabelsQueryOptions>
 {
-    internal class GroupLabelsQueryBuilder : QueryBuilder<GroupLabelsQueryOptions>
+    #region Overrides of QueryBuilder<GroupLabelsQueryOptions>
+
+    /// <inheritdoc />
+    protected override void BuildCore(Query query, GroupLabelsQueryOptions options)
     {
-        #region Overrides of QueryBuilder<GroupLabelsQueryOptions>
-
-        /// <inheritdoc />
-        protected override void BuildCore(Query query, GroupLabelsQueryOptions options)
+        if (options.WithCounts)
         {
-            if (options.WithCounts)
-            {
-                query.Add("with_counts", true);
-            }
-
-            if (!options.IncludeAncestorGroups)
-            {
-                query.Add("include_ancestor_groups", false);
-            }
+            query.Add("with_counts", true);
         }
 
-        #endregion
+        if (!options.IncludeAncestorGroups)
+        {
+            query.Add("include_ancestor_groups", false);
+        }
     }
+
+    #endregion
 }

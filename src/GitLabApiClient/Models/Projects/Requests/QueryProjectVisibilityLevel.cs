@@ -1,10 +1,9 @@
-namespace GitLabApiClient.Models.Projects.Requests
+namespace GitLabApiClient.Models.Projects.Requests;
+
+public enum QueryProjectVisibilityLevel
 {
-    public enum QueryProjectVisibilityLevel
-    {
-        All,
-        Private,
-        Internal,
-        Public
-    }
+    All,
+    Private,
+    Internal,
+    Public
 }

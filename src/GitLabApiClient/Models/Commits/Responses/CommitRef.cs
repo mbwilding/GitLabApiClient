@@ -1,13 +1,12 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Commits.Responses
+namespace GitLabApiClient.Models.Commits.Responses;
+
+public class CommitRef
 {
-    public class CommitRef
-    {
-        [JsonProperty("type")]
-        public CommitRefType Type { get; set; } = CommitRefType.All;
+    [JsonPropertyName("type")]
+    public CommitRefType Type { get; set; } = CommitRefType.All;
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
 }

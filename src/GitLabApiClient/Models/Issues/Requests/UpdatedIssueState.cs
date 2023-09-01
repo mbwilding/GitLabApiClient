@@ -1,13 +1,12 @@
-using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Issues.Requests
+namespace GitLabApiClient.Models.Issues.Requests;
+
+public enum UpdatedIssueState
 {
-    public enum UpdatedIssueState
-    {
-        [EnumMember(Value = "close")]
-        Close,
+    [JsonPropertyName("close")]
+    Close,
 
-        [EnumMember(Value = "reopen")]
-        Reopen
-    }
+    [JsonPropertyName("reopen")]
+    Reopen
 }

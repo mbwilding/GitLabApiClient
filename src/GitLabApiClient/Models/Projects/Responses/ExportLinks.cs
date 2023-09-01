@@ -1,13 +1,12 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Projects.Responses
+namespace GitLabApiClient.Models.Projects.Responses;
+
+public sealed class ExportStatusLinks
 {
-    public sealed class ExportStatusLinks
-    {
-        [JsonProperty("api_url")]
-        public string ApiUrl { get; set; }
+    [JsonPropertyName("api_url")]
+    public string ApiUrl { get; set; }
 
-        [JsonProperty("web_url")]
-        public string WebUrl { get; set; }
-    }
+    [JsonPropertyName("web_url")]
+    public string WebUrl { get; set; }
 }

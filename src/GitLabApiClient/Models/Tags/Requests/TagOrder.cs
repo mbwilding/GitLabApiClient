@@ -1,8 +1,7 @@
-namespace GitLabApiClient.Models.Tags.Requests
+namespace GitLabApiClient.Models.Tags.Requests;
+
+public enum TagOrder
 {
-    public enum TagOrder
-    {
-        Name,
-        Updated
-    }
+    Name,
+    Updated
 }

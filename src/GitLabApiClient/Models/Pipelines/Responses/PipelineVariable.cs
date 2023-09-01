@@ -1,16 +1,15 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Pipelines.Responses
+namespace GitLabApiClient.Models.Pipelines.Responses;
+
+public class PipelineVariable
 {
-    public class PipelineVariable
-    {
-        [JsonProperty("variable_type")]
-        public PipelineVariableType VariableType { get; set; } = PipelineVariableType.Unknown;
+    [JsonPropertyName("variable_type")]
+    public PipelineVariableType VariableType { get; set; } = PipelineVariableType.Unknown;
 
-        [JsonProperty("key")]
-        public string Key { get; set; }
+    [JsonPropertyName("key")]
+    public string Key { get; set; }
 
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
+    [JsonPropertyName("value")]
+    public string Value { get; set; }
 }

@@ -1,29 +1,28 @@
 using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Pipelines.Responses
+namespace GitLabApiClient.Models.Pipelines.Responses;
+
+public class Pipeline
 {
-    public class Pipeline
-    {
-        [JsonProperty("id")]
-        public int Id { get; set; }
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
 
-        [JsonProperty("status")]
-        public PipelineStatus Status { get; set; }
+    [JsonPropertyName("status")]
+    public PipelineStatus Status { get; set; }
 
-        [JsonProperty("ref")]
-        public string Ref { get; set; }
+    [JsonPropertyName("ref")]
+    public string Ref { get; set; }
 
-        [JsonProperty("sha")]
-        public string Sha { get; set; }
+    [JsonPropertyName("sha")]
+    public string Sha { get; set; }
 
-        [JsonProperty("web_url")]
-        public Uri WebUrl { get; set; }
+    [JsonPropertyName("web_url")]
+    public Uri WebUrl { get; set; }
 
-        [JsonProperty("created_at")]
-        public DateTime? CreatedAt { get; set; }
+    [JsonPropertyName("created_at")]
+    public DateTime? CreatedAt { get; set; }
 
-        [JsonProperty("updated_at")]
-        public DateTime? UpdatedAt { get; set; }
-    }
+    [JsonPropertyName("updated_at")]
+    public DateTime? UpdatedAt { get; set; }
 }

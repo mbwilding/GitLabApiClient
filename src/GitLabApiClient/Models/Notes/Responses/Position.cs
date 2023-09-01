@@ -1,32 +1,31 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Notes.Responses
+namespace GitLabApiClient.Models.Notes.Responses;
+
+public sealed class Position
 {
-    public sealed class Position
-    {
-        [JsonProperty("base_sha")]
-        public string BaseSha { get; set; }
+    [JsonPropertyName("base_sha")]
+    public string BaseSha { get; set; }
 
-        [JsonProperty("start_sha")]
-        public string StartSha { get; set; }
+    [JsonPropertyName("start_sha")]
+    public string StartSha { get; set; }
 
-        [JsonProperty("head_sha")]
-        public string HeadSha { get; set; }
+    [JsonPropertyName("head_sha")]
+    public string HeadSha { get; set; }
 
-        [JsonProperty("position_type")]
-        public PositionType PositionType { get; set; }
+    [JsonPropertyName("position_type")]
+    public PositionType PositionType { get; set; }
 
-        [JsonProperty("old_path")]
-        public string OldPath { get; set; }
+    [JsonPropertyName("old_path")]
+    public string OldPath { get; set; }
 
-        [JsonProperty("new_path")]
-        public string NewPath { get; set; }
+    [JsonPropertyName("new_path")]
+    public string NewPath { get; set; }
 
-        [JsonProperty("old_line")]
-        public int? OldLine { get; set; }
+    [JsonPropertyName("old_line")]
+    public int? OldLine { get; set; }
 
-        [JsonProperty("new_line")]
-        public int? NewLine { get; set; }
+    [JsonPropertyName("new_line")]
+    public int? NewLine { get; set; }
 
-    }
 }

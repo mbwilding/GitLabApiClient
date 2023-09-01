@@ -1,12 +1,11 @@
 using System.Runtime.Serialization;
 
-namespace GitLabApiClient.Models.Groups.Requests
+namespace GitLabApiClient.Models.Groups.Requests;
+
+public enum GroupsOrder
 {
-    public enum GroupsOrder
-    {
-        [EnumMember(Value = "name")]
-        Name,
-        [EnumMember(Value = "path")]
-        Path
-    }
+    [EnumMember(Value = "name")]
+    Name,
+    [EnumMember(Value = "path")]
+    Path
 }

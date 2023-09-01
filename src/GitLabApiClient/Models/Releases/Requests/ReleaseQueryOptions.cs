@@ -1,9 +1,8 @@
-namespace GitLabApiClient.Models.Releases.Requests
+namespace GitLabApiClient.Models.Releases.Requests;
+
+public sealed class ReleaseQueryOptions
 {
-    public sealed class ReleaseQueryOptions
+    internal ReleaseQueryOptions()
     {
-        internal ReleaseQueryOptions()
-        {
-        }
     }
 }

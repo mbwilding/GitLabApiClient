@@ -1,12 +1,11 @@
-namespace GitLabApiClient.Models.Job.Requests
-{
-    public class JobQueryOptions
-    {
-        internal JobQueryOptions() { }
+namespace GitLabApiClient.Models.Job.Requests;
 
-        /// <summary>
-        ///     The scope of jobs, one of: running, pending, finished, branches, tags
-        /// </summary>
-        public JobScope Scope { get; set; } = JobScope.All;
-    }
+public class JobQueryOptions
+{
+    internal JobQueryOptions() { }
+
+    /// <summary>
+    ///     The scope of jobs, one of: running, pending, finished, branches, tags
+    /// </summary>
+    public JobScope Scope { get; set; } = JobScope.All;
 }

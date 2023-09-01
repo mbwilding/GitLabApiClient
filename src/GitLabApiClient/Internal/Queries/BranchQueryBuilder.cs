@@ -1,13 +1,12 @@
 using GitLabApiClient.Models.Branches.Requests;
 
-namespace GitLabApiClient.Internal.Queries
+namespace GitLabApiClient.Internal.Queries;
+
+internal class BranchQueryBuilder : QueryBuilder<BranchQueryOptions>
 {
-    internal class BranchQueryBuilder : QueryBuilder<BranchQueryOptions>
+    protected override void BuildCore(Query query, BranchQueryOptions options)
     {
-        protected override void BuildCore(Query query, BranchQueryOptions options)
-        {
-            if (!string.IsNullOrEmpty(options.Search))
-                query.Add("search", options.Search);
-        }
+        if (!string.IsNullOrEmpty(options.Search))
+            query.Add("search", options.Search);
     }
 }

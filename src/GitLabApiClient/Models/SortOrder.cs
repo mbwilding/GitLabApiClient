@@ -1,8 +1,7 @@
-namespace GitLabApiClient.Models
+namespace GitLabApiClient.Models;
+
+public enum SortOrder
 {
-    public enum SortOrder
-    {
-        Descending,
-        Ascending
-    }
+    Descending,
+    Ascending
 }

@@ -2,39 +2,38 @@ using System;
 using GitLabApiClient.Internal.Utilities;
 using GitLabApiClient.Models.Groups.Responses;
 
-namespace GitLabApiClient.Internal.Paths
+namespace GitLabApiClient.Internal.Paths;
+
+public class GroupId
 {
-    public class GroupId
+    private readonly string _path;
+
+    private GroupId(string groupPath) => _path = groupPath;
+
+    /// <summary>
+    /// GroupId will encode the group path for you
+    /// </summary>
+    /// <param name="groupPath">The project path ie. 'group/project'</param>
+    /// <returns></returns>
+    public static implicit operator GroupId(string groupPath) => new(groupPath.UrlEncode());
+
+    public static implicit operator GroupId(int groupId) => new(groupId.ToString());
+
+    public static implicit operator GroupId(Group group)
     {
-        private readonly string _path;
+        string groupPath = group.FullPath?.Trim();
+        if (!string.IsNullOrEmpty(groupPath))
+            return new GroupId(groupPath.UrlEncode());
 
-        private GroupId(string groupPath) => _path = groupPath;
+        int id = group.Id;
+        if (id > 0)
+            return new GroupId(id.ToString());
 
-        /// <summary>
-        /// GroupId will encode the group path for you
-        /// </summary>
-        /// <param name="groupPath">The project path ie. 'group/project'</param>
-        /// <returns></returns>
-        public static implicit operator GroupId(string groupPath) => new GroupId(groupPath.UrlEncode());
+        throw new ArgumentException("Cannot determine group path or id from provided Group instance.");
+    }
 
-        public static implicit operator GroupId(int groupId) => new GroupId(groupId.ToString());
-
-        public static implicit operator GroupId(Group group)
-        {
-            string groupPath = group.FullPath?.Trim();
-            if (!string.IsNullOrEmpty(groupPath))
-                return new GroupId(groupPath.UrlEncode());
-
-            int id = group.Id;
-            if (id > 0)
-                return new GroupId(id.ToString());
-
-            throw new ArgumentException("Cannot determine group path or id from provided Group instance.");
-        }
-
-        public override string ToString()
-        {
-            return _path;
-        }
+    public override string ToString()
+    {
+        return _path;
     }
 }

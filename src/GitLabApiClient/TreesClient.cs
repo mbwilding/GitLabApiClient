@@ -7,26 +7,25 @@ using GitLabApiClient.Internal.Queries;
 using GitLabApiClient.Models.Trees.Requests;
 using GitLabApiClient.Models.Trees.Responses;
 
-namespace GitLabApiClient
+namespace GitLabApiClient;
+
+public sealed class TreesClient : ITreesClient
 {
-    public sealed class TreesClient : ITreesClient
+    private readonly GitLabHttpFacade _httpFacade;
+    private readonly TreeQueryBuilder _treeQueryBuilder;
+
+    internal TreesClient(GitLabHttpFacade httpFacade, TreeQueryBuilder treeQueryBuilder)
     {
-        private readonly GitLabHttpFacade _httpFacade;
-        private readonly TreeQueryBuilder _treeQueryBuilder;
+        _httpFacade = httpFacade;
+        _treeQueryBuilder = treeQueryBuilder;
+    }
 
-        internal TreesClient(GitLabHttpFacade httpFacade, TreeQueryBuilder treeQueryBuilder)
-        {
-            _httpFacade = httpFacade;
-            _treeQueryBuilder = treeQueryBuilder;
-        }
+    public async Task<IList<Tree>> GetAsync(ProjectId projectId, Action<TreeQueryOptions> options = null)
+    {
+        var queryOptions = new TreeQueryOptions();
+        options?.Invoke(queryOptions);
 
-        public async Task<IList<Tree>> GetAsync(ProjectId projectId, Action<TreeQueryOptions> options = null)
-        {
-            var queryOptions = new TreeQueryOptions();
-            options?.Invoke(queryOptions);
-
-            string url = _treeQueryBuilder.Build($"projects/{projectId}/repository/tree", queryOptions);
-            return await _httpFacade.GetPagedList<Tree>(url);
-        }
+        string url = _treeQueryBuilder.Build($"projects/{projectId}/repository/tree", queryOptions);
+        return await _httpFacade.GetPagedList<Tree>(url);
     }
 }

@@ -1,9 +1,8 @@
-namespace GitLabApiClient.Models.Milestones.Responses
+namespace GitLabApiClient.Models.Milestones.Responses;
+
+public enum MilestoneState
 {
-    public enum MilestoneState
-    {
-        Active,
-        Closed,
-        All
-    }
+    Active,
+    Closed,
+    All
 }

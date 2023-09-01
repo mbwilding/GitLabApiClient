@@ -1,9 +1,8 @@
-namespace GitLabApiClient.Models.Issues.Responses
+namespace GitLabApiClient.Models.Issues.Responses;
+
+public enum IssueState
 {
-    public enum IssueState
-    {
-        Opened,
-        Closed,
-        All
-    }
+    Opened,
+    Closed,
+    All
 }

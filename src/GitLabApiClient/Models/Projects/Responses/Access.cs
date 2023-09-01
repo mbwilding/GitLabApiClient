@@ -1,13 +1,12 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Projects.Responses
+namespace GitLabApiClient.Models.Projects.Responses;
+
+public sealed class Access
 {
-    public sealed class Access
-    {
-        [JsonProperty("access_level")]
-        public int AccessLevel { get; set; }
+    [JsonPropertyName("access_level")]
+    public int AccessLevel { get; set; }
 
-        [JsonProperty("notification_level")]
-        public int NotificationLevel { get; set; }
-    }
+    [JsonPropertyName("notification_level")]
+    public int NotificationLevel { get; set; }
 }

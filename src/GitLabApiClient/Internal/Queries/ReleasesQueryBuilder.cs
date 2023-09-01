@@ -1,6 +1,5 @@
-namespace GitLabApiClient.Internal.Queries
+namespace GitLabApiClient.Internal.Queries;
+
+class ReleasesQueryBuilder
 {
-    class ReleasesQueryBuilder
-    {
-    }
 }

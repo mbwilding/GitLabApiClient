@@ -1,10 +1,9 @@
 using Xunit;
 
-namespace GitLabApiClient.Test
+namespace GitLabApiClient.Test;
+
+[Trait("Category", "LinuxIntegration")]
+[Collection("GitLabContainerFixture")]
+public class TagsClientTest
 {
-    [Trait("Category", "LinuxIntegration")]
-    [Collection("GitLabContainerFixture")]
-    public class TagsClientTest
-    {
-    }
 }

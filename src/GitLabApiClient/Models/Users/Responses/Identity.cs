@@ -1,13 +1,12 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Users.Responses
+namespace GitLabApiClient.Models.Users.Responses;
+
+public sealed class Identity
 {
-    public sealed class Identity
-    {
-        [JsonProperty("extern_uid")]
-        public string ExternUid { get; set; }
+    [JsonPropertyName("extern_uid")]
+    public string ExternUid { get; set; }
 
-        [JsonProperty("provider")]
-        public string Provider { get; set; }
-    }
+    [JsonPropertyName("provider")]
+    public string Provider { get; set; }
 }

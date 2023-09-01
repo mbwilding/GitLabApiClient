@@ -3,58 +3,57 @@ using GitLabApiClient.Models.Commits.Responses;
 using GitLabApiClient.Models.Pipelines.Responses;
 using GitLabApiClient.Models.Runners.Responses;
 using GitLabApiClient.Models.Users.Responses;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace GitLabApiClient.Models.Job.Responses
+namespace GitLabApiClient.Models.Job.Responses;
+
+public sealed class Job
 {
-    public sealed class Job
-    {
-        [JsonProperty("allow_failure")]
-        public bool AllowFailure { get; set; }
+    [JsonPropertyName("allow_failure")]
+    public bool AllowFailure { get; set; }
 
-        [JsonProperty("artifacts_expire_at")]
-        public DateTime ArtifactsExpireAt { get; set; }
+    [JsonPropertyName("artifacts_expire_at")]
+    public DateTime ArtifactsExpireAt { get; set; }
 
-        [JsonProperty("commit")]
-        public Commit Commit { get; set; }
+    [JsonPropertyName("commit")]
+    public Commit Commit { get; set; }
 
-        [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
+    [JsonPropertyName("created_at")]
+    public DateTime CreatedAt { get; set; }
 
-        [JsonProperty("duration")]
-        public double Duration { get; set; }
+    [JsonPropertyName("duration")]
+    public double Duration { get; set; }
 
-        [JsonProperty("finished_at")]
-        public DateTime? FinishedAt { get; set; }
+    [JsonPropertyName("finished_at")]
+    public DateTime? FinishedAt { get; set; }
 
-        [JsonProperty("id")]
-        public int Id { get; set; }
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
 
-        [JsonProperty("pipeline")]
-        public Pipeline Pipeline { get; set; }
+    [JsonPropertyName("pipeline")]
+    public Pipeline Pipeline { get; set; }
 
-        [JsonProperty("ref")]
-        public string Ref { get; set; }
+    [JsonPropertyName("ref")]
+    public string Ref { get; set; }
 
-        [JsonProperty("runner")]
-        public Runner Runner { get; set; }
+    [JsonPropertyName("runner")]
+    public Runner Runner { get; set; }
 
-        [JsonProperty("stage")]
-        public string Stage { get; set; }
+    [JsonPropertyName("stage")]
+    public string Stage { get; set; }
 
-        [JsonProperty("started_at")]
-        public DateTime? StartedAt { get; set; }
+    [JsonPropertyName("started_at")]
+    public DateTime? StartedAt { get; set; }
 
-        [JsonProperty("status")]
-        public string Status { get; set; }
+    [JsonPropertyName("status")]
+    public string Status { get; set; }
 
-        [JsonProperty("user")]
-        public User User { get; set; }
+    [JsonPropertyName("user")]
+    public User User { get; set; }
 
-        [JsonProperty("web_url")]
-        public string WebUrl { get; set; }
-    }
+    [JsonPropertyName("web_url")]
+    public string WebUrl { get; set; }
 }
