@@ -21,7 +21,7 @@ public class GitLabContainerFixture : IAsyncLifetime
     public static string GitlabHost { get; private set; }
 
     private IContainerService _gitlabContainer;
-    private readonly string _gitlabDockerImage = "gitlab/gitlab-ce:12.10.14-ce.0";
+    private readonly string _gitlabDockerImage = "gitlab/gitlab-ce";
 
     public async Task InitializeAsync()
     {

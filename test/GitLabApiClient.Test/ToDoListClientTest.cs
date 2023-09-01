@@ -45,6 +45,7 @@ public class ToDoListClientTest : IAsyncLifetime
             && t.Body == "IssueTitle"
             && t.TargetType == ToDoTargetType.Issue
         );
+
         todoList.Should().Contain(t =>
             t.ActionType == ToDoActionType.Assigned
             && t.Body == "Title"
@@ -85,23 +86,23 @@ public class ToDoListClientTest : IAsyncLifetime
     public static IEnumerable<object[]> QueriesAndAssertions => new[]
     {
         new object[]{
-            (Action<ToDoListQueryOptions>) ((x) => x.Type = ToDoTargetType.MergeRequest),
-            (Action<IEnumerable<IToDo>>)((x) => x.Should().NotBeEmpty().And.OnlyContain(t => t.TargetType == ToDoTargetType.MergeRequest))
+            (Action<ToDoListQueryOptions>) (x => x.Type = ToDoTargetType.MergeRequest),
+            (Action<IEnumerable<IToDo>>)(x => x.Should().NotBeEmpty().And.OnlyContain(t => t.TargetType == ToDoTargetType.MergeRequest))
         },
         new object[]{
-            (Action<ToDoListQueryOptions>) ((x) => x.Type = ToDoTargetType.Issue),
-            (Action<IEnumerable<IToDo>>)((x) => x.Should().NotBeEmpty().And.OnlyContain(t => t.TargetType == ToDoTargetType.Issue))
+            (Action<ToDoListQueryOptions>) (x => x.Type = ToDoTargetType.Issue),
+            (Action<IEnumerable<IToDo>>)(x => x.Should().NotBeEmpty().And.OnlyContain(t => t.TargetType == ToDoTargetType.Issue))
         },
         new object[]{
-            (Action<ToDoListQueryOptions>) ((x) => x.ActionType = ToDoActionType.Assigned),
-            (Action<IEnumerable<IToDo>>)((x) => x.Should().NotBeEmpty().And.OnlyContain(t => t.ActionType == ToDoActionType.Assigned))
+            (Action<ToDoListQueryOptions>) (x => x.ActionType = ToDoActionType.Assigned),
+            (Action<IEnumerable<IToDo>>)(x => x.Should().NotBeEmpty().And.OnlyContain(t => t.ActionType == ToDoActionType.Assigned))
         },
         new object[]{
-            (Action<ToDoListQueryOptions>) ((x) => x.ActionType = ToDoActionType.DirectlyAddressed),
-            (Action<IEnumerable<IToDo>>)((x) => x.Should().NotBeEmpty().And.OnlyContain(t => t.ActionType == ToDoActionType.DirectlyAddressed))
+            (Action<ToDoListQueryOptions>) (x => x.ActionType = ToDoActionType.DirectlyAddressed),
+            (Action<IEnumerable<IToDo>>)(x => x.Should().NotBeEmpty().And.OnlyContain(t => t.ActionType == ToDoActionType.DirectlyAddressed))
         },
         new object[]{
-            (Action<ToDoListQueryOptions>) ((x) => {
+            (Action<ToDoListQueryOptions>) (x => {
                 x.ActionType = ToDoActionType.DirectlyAddressed;
                 x.AuthorId = GitLabApiHelper.TestUserId;
                 x.ProjectId = GitLabApiHelper.TestProjectId;
@@ -109,7 +110,7 @@ public class ToDoListClientTest : IAsyncLifetime
                 x.State = ToDoState.Pending;
                 x.Type = ToDoTargetType.Issue;
             }),
-            (Action<IEnumerable<IToDo>>)((x) =>
+            (Action<IEnumerable<IToDo>>)(x =>
                 x.Should().NotBeEmpty().And.OnlyContain(t =>
                     t.ActionType == ToDoActionType.DirectlyAddressed
                     && t.Author.Username == GitLabApiHelper.TestUserName

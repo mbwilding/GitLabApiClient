@@ -133,12 +133,8 @@ internal sealed class GitLabApiRequestor
         throw new GitLabException(responseMessage.StatusCode, errorResponse ?? "");
     }
 
-    private async Task<T> ReadResponse<T>(HttpResponseMessage responseMessage)
-    {
-        string response = await responseMessage.Content.ReadAsStringAsync();
-        var result = _jsonSerializer.Deserialize<T>(response);
-        return result;
-    }
+    private async Task<T> ReadResponse<T>(HttpResponseMessage responseMessage) =>
+        await _jsonSerializer.DeserializeAsync<T>(await responseMessage.Content.ReadAsStreamAsync());
 
     private StringContent SerializeToString(object data)
     {

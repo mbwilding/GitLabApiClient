@@ -1,5 +1,8 @@
+using System.IO;
+using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace GitLabApiClient.Internal.Http.Serialization;
 
@@ -21,5 +24,6 @@ public sealed class RequestsJsonSerializer
 
     public string Serialize(object obj) => JsonSerializer.Serialize(obj, Settings);
 
-    public T Deserialize<T>(string serializeJson) => JsonSerializer.Deserialize<T>(serializeJson, Settings)!;
+    public async Task<T> DeserializeAsync<T>(Stream stream) =>
+        (await JsonSerializer.DeserializeAsync<T>(stream, Settings))!;
 }
