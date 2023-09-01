@@ -11,7 +11,12 @@ public sealed class RequestsJsonSerializer
     {
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         PropertyNameCaseInsensitive = true,
-        AllowTrailingCommas = true
+        AllowTrailingCommas = true,
+        Converters =
+        {
+            new BoolStringConverter(),
+            new StringNumberConverter()
+        }
     };
 
     public string Serialize(object obj) => JsonSerializer.Serialize(obj, Settings);

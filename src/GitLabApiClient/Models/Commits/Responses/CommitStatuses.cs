@@ -28,7 +28,7 @@ public sealed class CommitStatuses
     [JsonPropertyName("allow_failure")]
     public bool AllowFailure { get; set; }
     [JsonPropertyName("coverage")]
-    public float Coverage { get; set; }
+    public float? Coverage { get; set; }
     [JsonPropertyName("author")]
     public Author Author { get; set; }
 
